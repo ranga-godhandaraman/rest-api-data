@@ -1,5 +1,5 @@
 const db = require("../models");
-const Data = db.data; // DB name --ranga
+const Datadm = db.dm; // DB name --ranga
 const Op = db.Sequelize.Op;
 
 // Create and Save
@@ -13,14 +13,22 @@ exports.create = (req, res) => {
   }
 
   // Create 
-  const data = {
-    title: req.body.title,
-    description: req.body.description,
+  const datadm = {
+    studyid: req.body.studyid,
+    usubjid: req.body.usubjid,
+    subjid: req.body.subjid,
+    siteid: req.body.siteid,
+    age: req.body.age,
+    ageu: req.body.ageu,
+    sex: req.body.sex,
+    race: req.body.race,
+    arm: req.body.arm,
+    country: req.body. country,
     published: req.body.published ? req.body.published : false
   };
 
   // Save data in db
-  Data.create()
+  Datadm.create(dm)
     .then(data => {
       res.send(data);
     })
@@ -34,10 +42,10 @@ exports.create = (req, res) => {
 
 // Retrieve data from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
+  const studyid = req.query.studyid;
+  var condition = studyid ? { studyid: { [Op.iLike]: `%${studyid}%` } } : null;
 
-  Data.findAll({ where: condition })
+  Datadm.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -53,7 +61,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Data.findByPk(id)
+  Datadm.findByPk(id)
     .then(data => {
       res.send(data);
     })
@@ -68,7 +76,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Data.update(req.body, {
+  Datadm.update(req.body, {
     where: { id: id }
   })
     .then(num => {
@@ -93,7 +101,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Data.destroy({
+  Datadm.destroy({
     where: { id: id }
   })
     .then(num => {
@@ -133,7 +141,7 @@ exports.deleteAll = (req, res) => {
 
 // find all 
 exports.findAllPublished = (req, res) => {
-  Data.findAll({ where: { published: true } })
+  Datadm.findAll({ where: { published: true } })
     .then(data => {
       res.send(data);
     })

@@ -1,8 +1,8 @@
 module.exports = {
   HOST: "localhost",
   USER: "postgres",
-  PASSWORD: "acldigital",// set according to reapective DB --ranga
-  DB: "testdb",
+  PASSWORD: "acldigital",// set to respective DB --ranga
+  DB: "postgres",
   dialect: "postgres",
   pool: {
     max: 5,

@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Data = sequelize.define("data", {
+  const Datadm = sequelize.define("datadm", {
     studyid: {
       type: Sequelize.STRING
     },
@@ -35,6 +35,6 @@ module.exports = (sequelize, Sequelize) => {
     }
   });
 
-  return Data;
+  return Datadm;
 };
- // 
+ 
