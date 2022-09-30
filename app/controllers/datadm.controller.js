@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  if (!req.body.studyid) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -13,7 +13,7 @@ exports.create = (req, res) => {
   }
 
   // Create 
-  const datadm = {
+  const dm = {
     studyid: req.body.studyid,
     usubjid: req.body.usubjid,
     subjid: req.body.subjid,
