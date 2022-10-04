@@ -4,13 +4,12 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     usubjid: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      primaryKey: true
     },
     subjid: {
       type: Sequelize.STRING
-    },
-    siteid: {
-      type: Sequelize.STRING
+
     },
     siteid: {
       type: Sequelize.STRING

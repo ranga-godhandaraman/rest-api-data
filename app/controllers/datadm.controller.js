@@ -1,11 +1,12 @@
 const db = require("../models");
-const Datadm = db.dm; // DB name --ranga
+const Datadm = db.datadm; // DB name --ranga
+console.log(db.findAll)
 const Op = db.Sequelize.Op;
 
 // Create and Save
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.studyid) {
+  if (!req.body.usubjid) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -24,7 +25,7 @@ exports.create = (req, res) => {
     race: req.body.race,
     arm: req.body.arm,
     country: req.body. country,
-    published: req.body.published ? req.body.published : false
+    // published: req.body.published ? req.body.published : false
   };
 
   // Save data in db
@@ -42,10 +43,10 @@ exports.create = (req, res) => {
 
 // Retrieve data from the database.
 exports.findAll = (req, res) => {
-  const studyid = req.query.studyid;
-  var condition = studyid ? { studyid: { [Op.iLike]: `%${studyid}%` } } : null;
+  const usubjid = req.query.usubjid;
+  // var condition = usubjid ? { usubjid: { [Op.iLike]: `%${usubjid}%` } } : null;
 
-  Datadm.findAll({ where: condition })
+  Datadm.findAll()
     .then(data => {
       res.send(data);
     })
@@ -56,6 +57,7 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
 
 // Find a single data with an id
 exports.findOne = (req, res) => {
